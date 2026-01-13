@@ -1,41 +1,34 @@
+import Card from "@/components/card";
 import RecentTransactions from "@/components/recent-transaction";
-import { ArrowDownRight, ArrowUpRight, WalletIcon } from "lucide-react-native";
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react-native";
+import { View } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
   return (
-    <View className="flex-1 flex flex-col">
-      <SafeAreaView className="flex-1 p-4">
-        <View className="bg-white rounded-2xl mx-4 p-4 gap-4">
-          <View className="flex-row justify-between items-center">
-            <View>
-              <Text className="font-semibold">Total Balance</Text>
-              <Text className="text-2xl font-bold">$0.00</Text>
-            </View>
-            <View>
-              <WalletIcon size={24} color="black" />
-            </View>
-          </View>
-          <View className="flex-row justify-around items-center">
-            <View className="flex-1 flex-row gap-2 items-center">
-              <ArrowIcon isUp={true} />
-              <View>
-                <Text>Income</Text>
-                <Text>$0.00</Text>
-              </View>
-            </View>
-            <View className="flex-1 flex-row gap-2 items-center">
-              <ArrowIcon isUp={false} />
-              <View>
-                <Text>Expenses</Text>
-                <Text>$0.00</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </SafeAreaView>
-      <RecentTransactions />
+    <View className="flex-1 bg-white">
+      <View className="flex-1 mt-2 gap-1">
+        <Card
+          title="Expenses"
+          amount="$0.00"
+          category="expenses"
+          onClick={() => router.push("/expenses")}
+        />
+        <Card
+          title="Recurring"
+          amount="$0.00"
+          category="recurring"
+          onClick={() => router.push("/recurring")}
+        />
+        <Card
+          title="Total"
+          amount="$0.00"
+          category="total"
+          onClick={() => router.push("/")}
+        />
+        <RecentTransactions />
+      </View>
     </View>
   );
 }

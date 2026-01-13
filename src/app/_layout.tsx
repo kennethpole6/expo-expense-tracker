@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
+import { Button } from "react-native";
 import "../global.css";
 export default function RootLayout() {
   const router = useRouter();
@@ -24,5 +25,19 @@ export default function RootLayout() {
       mounted = false;
     };
   }, []);
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack>
+      <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerTitle: "Expense Tracker",
+          headerRight: () => (
+            <Button title="Add" onPress={() => router.push("/add-expense")} />
+          ),
+        }}
+      />
+      <Stack.Screen name="expenses" />
+      <Stack.Screen name="recurring" />
+    </Stack>
+  );
 }

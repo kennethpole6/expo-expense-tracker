@@ -112,10 +112,10 @@ const TransactionCard = ({
 // --- Main Component ---
 const RecentTransactions = () => {
   return (
-    <View className="flex-1 bg-white rounded-2xl mx-4 px-4 pt-10">
+    <View className="flex-1 rounded-2xl mx-4 my-4">
       {/* Header Section */}
-      <View className="flex-row justify-between items-end mb-6">
-        <Text className="text-2xl font-bold text-black tracking-tight">
+      <View className="flex-row justify-between items-end mb-4 px-2">
+        <Text className="text-base font-bold text-black tracking-tight">
           Recent Transactions
         </Text>
         <TouchableOpacity>
@@ -133,7 +133,7 @@ const RecentTransactions = () => {
           <TransactionCard item={item} index={index} />
         )}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ paddingBottom: 2 }}
       />
     </View>
   );
